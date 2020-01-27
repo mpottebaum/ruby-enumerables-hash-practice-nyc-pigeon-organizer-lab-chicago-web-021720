@@ -37,13 +37,14 @@ def create_attribute_array(name, attribute_hash)
 end
 
 def nyc_pigeon_organizer(data)
-  pigeon_list = list_hash_with_name_keys(data)
+  name_array = unique_name_array(data)
+  pigeon_list = list_hash_with_name_keys(name_array)
   
-  pigeon_list.each_pair do |name, attribute|
-    data.each_pair {|att, val| pigeon_list[name][attribute][val] = create_attribute_array(name, val)}
-  end
-  data.each_pair do |k, v|
-    create_attribute_array
+  name_array.map do |name|
+    data.each_pair do |att, att_hash|
+      att_array = create_attribute_array(name, att_hash)
+      pigeon_list[name][att].concat(att_array)
+    end
   end
   
   pigeon_list
