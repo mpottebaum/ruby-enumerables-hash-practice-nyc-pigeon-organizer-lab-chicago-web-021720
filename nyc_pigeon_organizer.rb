@@ -1,4 +1,4 @@
-def list_hash_with_name_keys(data_hash)
+def unique_name_array(data_hash)
   names_list = []
   
   #adds each name array to running list
@@ -9,17 +9,10 @@ def list_hash_with_name_keys(data_hash)
   #flatten name array and remove duplicates
   flat_list = names_list.flatten
   unique_list = flat_list.uniq
-  
-  #creates new hash with name keys, values are hashes with attribute keys
-  #attribute keys' values are empty arrays
-  pigeon_list = {}
-  unique_list.map {|name| pigeon_list[name] = {
-    :color => [],
-    :gender => [],
-    :lives => []
-  }}
-  pigeon_list
+  unique_list
 end
+
+
 
 def create_attribute_array(name, attribute_hash)
   #given the name of pigeon and attribute hash, returns array of attribute values corresponding to name
