@@ -12,7 +12,17 @@ def unique_name_array(data_hash)
   unique_list
 end
 
-
+def list_hash_with_name_keys(name_array)
+  #creates new hash with name keys, values are hashes with attribute keys
+  #attribute keys' values are empty arrays
+  pigeon_list = {}
+  name_array.map {|name| pigeon_list[name] = {
+    :color => [],
+    :gender => [],
+    :lives => []
+  }}
+  pigeon_list
+end
 
 def create_attribute_array(name, attribute_hash)
   #given the name of pigeon and attribute hash, returns array of attribute values corresponding to name
